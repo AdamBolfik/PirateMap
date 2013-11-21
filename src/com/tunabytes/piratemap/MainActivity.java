@@ -1,7 +1,6 @@
 package com.tunabytes.piratemap;
 
 import java.util.Locale;
-
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -9,11 +8,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
+import android.view.MenuItem;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
-
+	
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide fragments for each of the sections.
 	 * We use a {@link android.support.v4.app.FragmentPagerAdapter} derivative, which will keep every loaded
@@ -73,6 +74,17 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		return false;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    // Respond to the action bar's Up/Home button
+	    case android.R.id.home:
+	        NavUtils.navigateUpFromSameTask(this);
+	        return true;
+	    }
+	    return super.onOptionsItemSelected(item);
 	}
 
 	@Override
@@ -135,6 +147,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			}
 			return null;
 		}
+		
 	}
 
 }
